@@ -5,6 +5,10 @@ public class GamePiece {
     // FIELDS
     private int positionX;
     private int positionY;
+    private int minX;
+    private int minY;
+    private int maxX;
+    private int maxY;
     private boolean frozen;
     private String name;
     private String color;
@@ -14,6 +18,10 @@ public class GamePiece {
     public GamePiece() {
         this.positionX = 0;
         this.positionY = 0;
+        this.minX = 0;
+        this.minY = 0;
+        this.maxX = 7;
+        this.maxY = 7;
         this.frozen = false;
     }
 
@@ -25,6 +33,22 @@ public class GamePiece {
 
     public int getPositionY() {
         return positionY;
+    }
+
+    public int getMinX() {
+        return minX;
+    }
+
+    public int getMinY() {
+        return minY;
+    }
+
+    public int getMaxX() {
+        return maxX;
+    }
+
+    public int getMaxY() {
+        return maxY;
     }
 
     public boolean getFrozen() {
@@ -51,8 +75,21 @@ public class GamePiece {
     // custom
     public void move(int newPositionX, int newPositionY) {
         if (this.frozen == false) {
-            this.positionX = newPositionX;
-            this.positionY = newPositionY;
+            if (newPositionX > this.maxX) {
+                this.positionX = this.maxX;
+            } else if (newPositionX < this.minX) {
+                this.positionX = this.minX;
+            } else {
+                this.positionX = newPositionX;
+            }
+
+            if (newPositionY > this.maxY) {
+                this.positionY = this.maxY;
+            } else if (newPositionY < this.minY) {
+                this.positionY = this.minY;
+            } else {
+                this.positionY = newPositionY;
+            }
         }
     }
 
@@ -65,6 +102,7 @@ public class GamePiece {
     }
 
     public void printInfo() {
+        System.out.println("------------------------------");
         System.out.println("OBJECT INFO");
         System.out.println("Position X: " + this.getPositionX());
         System.out.println("Position Y: " + this.getPositionY());
