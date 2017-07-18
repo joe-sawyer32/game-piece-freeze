@@ -63,4 +63,13 @@ public class GamePiece {
     public void unfreeze() {
         this.frozen = false;
     }
+
+    public void printInfo() {
+        System.out.println("OBJECT INFO");
+        System.out.println("Position X: " + this.getPositionX());
+        System.out.println("Position Y: " + this.getPositionY());
+        System.out.println("Frozen: " + this.getFrozen());
+        System.out.println("Name: " + this.getName());
+        System.out.println("Color: " + this.getColor() + "\n");
+    }
 }
